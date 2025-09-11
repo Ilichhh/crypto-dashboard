@@ -1,10 +1,11 @@
-import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+/* eslint-disable no-empty-pattern */
+import type { Route } from './+types/home';
+import { Welcome } from '../welcome/welcome';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: 'Crypto Dashboard' },
+    { name: 'description', content: 'Welcome to React Router!' },
   ];
 }
 
