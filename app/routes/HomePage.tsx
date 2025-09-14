@@ -1,6 +1,6 @@
 /* eslint-disable no-empty-pattern */
-import { Tables } from '~/tables/tables';
-import type { Route } from './+types/home';
+import { Home } from '~/home/Home';
+import type { Route } from '../+types/root';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,6 +9,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return <Tables />;
+export default function HomePage() {
+  return <Home />;
 }
