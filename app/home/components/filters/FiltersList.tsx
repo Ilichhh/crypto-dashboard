@@ -1,15 +1,19 @@
 import { useMetricsSchema } from '~/hooks/useMetricsSchema';
 
-import { FilterItem } from './FilterItem';
+import { FiltersGroup } from './FiltersGroup';
 
 export function FiltersList() {
   const { data, isLoading } = useMetricsSchema();
 
   if (isLoading) return '';
   return (
-    <div className="flex flex-col items-start gap-2">
-      {Object.keys(data).map((metric) => (
-        <FilterItem metric={metric} key={metric}></FilterItem>
+    <div className="flex flex-col items-start gap-8">
+      {Object.keys(data).map((metricsGroup) => (
+        <FiltersGroup
+          metricsGroup={metricsGroup}
+          metricsGroupList={data[metricsGroup]}
+          key={metricsGroup}
+        ></FiltersGroup>
       ))}
     </div>
   );
