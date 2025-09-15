@@ -7,9 +7,9 @@ interface FiltersGroupProps {
 }
 
 export function FiltersGroup({ metricsGroup, metricsGroupList }: FiltersGroupProps) {
-  const { selected, toggleMetric, toggleGroup } = useFiltersStore();
+  const { selectedMetrics, toggleMetric, toggleGroup } = useFiltersStore();
 
-  const selectedInGroup = metricsGroupList.filter((metric) => selected.includes(metric));
+  const selectedInGroup = metricsGroupList.filter((metric) => selectedMetrics.includes(metric));
 
   const allChecked = metricsGroupList.length && selectedInGroup.length === metricsGroupList.length;
   const partiallyChecked =
