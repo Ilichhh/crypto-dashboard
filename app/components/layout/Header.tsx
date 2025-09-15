@@ -4,10 +4,11 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from '~/components/ui/navigation-menu';
+import { ModeToggle } from '../mode-toggle';
 
 export function Header() {
   return (
-    <header className="p-1">
+    <header className="flex justify-between px-4 py-1">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -18,6 +19,7 @@ export function Header() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+      <ModeToggle></ModeToggle>
     </header>
   );
 }
