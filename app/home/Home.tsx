@@ -5,10 +5,10 @@ import { Metrics } from '~/components/layout/Metrics';
 export function Home() {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header></Header>
-      <main className="flex flex-1">
-        <Sidebar></Sidebar>
-        <Metrics></Metrics>
+      <Header />
+      <main className="flex flex-1 gap-4">
+        <Sidebar />
+        <Metrics />
       </main>
     </div>
   );
