@@ -1,13 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
+import { api } from '~/api/api';
 
 export const useMetricsSchema = () => {
-  const { data, isLoading } = useQuery({
+  const { data, error, isLoading } = useQuery({
     queryKey: ['metricsSchema'],
     queryFn: async () => {
-      const response = await fetch('http://localhost:5000/api/metrics/schema');
-      return await response.json();
+      const response = await api.get('/api/metrics/schema');
+      return response.data;
     },
   });
 
-  return { data, isLoading };
+  return { data, error, isLoading };
 };
