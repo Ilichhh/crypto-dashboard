@@ -3,8 +3,8 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from '~/components/ui/navigation-menu';
-import { ModeToggle } from '../mode-toggle';
+} from '~/components/ui/NavigationMenu';
+import { ModeToggle } from '../ModeToggle';
 
 export function Header() {
   return (

@@ -1,7 +1,8 @@
 import { useMetrics } from '~/hooks/useMetrics';
+
 import { MetricsTable } from '~/home/components/table/MetricsTable';
-import { generateColumns } from '~/home/components/table/Columns';
-import { ScrollArea, ScrollBar } from '../ui/scroll-area';
+import { generateColumns } from '~/home/components/table/columns';
+import { ScrollArea, ScrollBar } from '../ui/ScrollArea';
 
 export function Metrics() {
   const { data, isLoading } = useMetrics();

@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '~/components/ui/table';
+} from '~/components/ui/Table';
 
 interface MetricsTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

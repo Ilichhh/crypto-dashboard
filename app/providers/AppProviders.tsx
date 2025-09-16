@@ -1,5 +1,5 @@
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { ThemeProvider } from '~/components/theme-provider';
+import { ThemeProvider } from '~/components/ThemeProvider';
 
 import type { PropsWithChildren } from 'react';
 
