@@ -7,7 +7,7 @@ export function FiltersList() {
 
   if (isLoading) return '';
   return (
-    <div className="flex flex-col items-start gap-8">
+    <div className="flex flex-col items-start gap-8 px-4 py-8">
       {Object.keys(data).map((metricsGroup) => (
         <FiltersGroup
           metricsGroup={metricsGroup}

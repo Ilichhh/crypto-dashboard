@@ -9,6 +9,5 @@ export const useMetricsSchema = () => {
     },
   });
 
-  console.log(data);
   return { data, isLoading };
 };

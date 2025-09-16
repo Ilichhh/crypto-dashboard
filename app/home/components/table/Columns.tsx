@@ -6,7 +6,7 @@ export type MetricRow = {
 };
 
 const formatValue = (value: unknown, key: string) => {
-  if (!value) return '-';
+  if (!value && typeof value !== 'number') return '-';
   if (typeof value !== 'number') return value;
 
   if (key.includes('%')) return `${value.toFixed(1)}%`;

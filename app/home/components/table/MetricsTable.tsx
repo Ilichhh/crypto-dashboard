@@ -40,7 +40,16 @@ export function MetricsTable<TData, TValue>({ columns, data }: MetricsTableProps
         {table.getRowModel().rows.map((row) => (
           <TableRow key={row.id}>
             {row.getVisibleCells().map((cell) => (
-              <TableCell key={cell.id}>
+              <TableCell
+                key={cell.id}
+                className={
+                  typeof cell.getValue() === 'number'
+                    ? (cell.getValue() as number) >= 0
+                      ? 'bg-positive text-positive-foreground'
+                      : 'bg-negative text-negative-foreground'
+                    : ''
+                }
+              >
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </TableCell>
             ))}
