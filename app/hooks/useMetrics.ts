@@ -5,7 +5,7 @@ import { api } from '~/api/api';
 export const useMetrics = () => {
   const { selectedMetrics } = useFiltersStore();
 
-  const { data, error, isLoading } = useQuery({
+  const { data, error, isError, isLoading, isFetching } = useQuery({
     queryKey: ['metrics', selectedMetrics],
     queryFn: async () => {
       const response = await api.get('/api/metrics', {
@@ -15,5 +15,5 @@ export const useMetrics = () => {
     },
   });
 
-  return { data, error, isLoading };
+  return { data, error, isError, isLoading, isFetching };
 };
