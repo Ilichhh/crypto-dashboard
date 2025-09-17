@@ -1,9 +1,5 @@
-import { type ColumnDef } from '@tanstack/react-table';
-
-export type MetricRow = {
-  strategy: string;
-  [key: string]: string | number;
-};
+import type { ColumnDef } from '@tanstack/react-table';
+import type { StrategyMetrics } from '~/types/metrics';
 
 const formatValue = (value: unknown, key: string) => {
   if (!value && typeof value !== 'number') return '-';
@@ -14,7 +10,7 @@ const formatValue = (value: unknown, key: string) => {
   return value.toFixed(4);
 };
 
-export function generateColumns(data: MetricRow[]): ColumnDef<MetricRow>[] {
+export function generateColumns(data: StrategyMetrics[]): ColumnDef<StrategyMetrics>[] {
   if (!data || data.length === 0) return [];
 
   return Object.keys(data[0]).map((key) => ({

@@ -1,6 +1,6 @@
 import { Header } from '~/components/layout/Header';
 import { Sidebar } from '~/components/layout/Sidebar';
-import { Metrics } from '~/components/layout/Metrics';
+import { MainSection } from '~/components/layout/MainSection';
 
 export function Home() {
   return (
@@ -8,7 +8,7 @@ export function Home() {
       <Header />
       <main className="flex flex-1">
         <Sidebar />
-        <Metrics />
+        <MainSection />
       </main>
     </div>
   );
