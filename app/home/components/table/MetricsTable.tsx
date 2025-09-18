@@ -45,8 +45,8 @@ export function MetricsTable<TData, TValue>({ columns, data }: MetricsTableProps
                 className={
                   typeof cell.getValue() === 'number'
                     ? (cell.getValue() as number) >= 0
-                      ? 'bg-positive text-positive-foreground'
-                      : 'bg-negative text-negative-foreground'
+                      ? 'text-positive-foreground'
+                      : 'text-negative-foreground'
                     : ''
                 }
               >
