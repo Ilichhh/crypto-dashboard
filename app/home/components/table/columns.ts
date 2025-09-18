@@ -10,10 +10,10 @@ const formatValue = (value: unknown, key: string) => {
   return value.toFixed(4);
 };
 
-export function generateColumns(data: StrategyMetrics[]): ColumnDef<StrategyMetrics>[] {
-  if (!data || data.length === 0) return [];
+export function generateColumns(metricsData: StrategyMetrics[]): ColumnDef<StrategyMetrics>[] {
+  if (!metricsData || metricsData.length === 0) return [];
 
-  return Object.keys(data[0]).map((key) => ({
+  return Object.keys(metricsData[0]).map((key) => ({
     accessorKey: key,
     header: key,
     cell: (info) => formatValue(info.getValue(), key),
