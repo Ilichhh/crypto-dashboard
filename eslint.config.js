@@ -21,6 +21,7 @@ export default defineConfig([
     },
     rules: {
       'react/react-in-jsx-scope': 'off',
+      'no-unused-vars': 'off',
     },
     extends: ['js/recommended'],
     languageOptions: {
