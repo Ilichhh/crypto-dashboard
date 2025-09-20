@@ -3,12 +3,15 @@ import { create } from 'zustand';
 interface FiltersState {
   selectedMetrics: string[];
 
+  setSelectedMetrics: (metrics: string[]) => void;
   toggleMetric: (metric: string, checked: boolean) => void;
   toggleGroup: (metrics: string[], checked: boolean) => void;
 }
 
 export const useFiltersStore = create<FiltersState>((set) => ({
   selectedMetrics: [],
+
+  setSelectedMetrics: (metrics) => set({ selectedMetrics: metrics }),
 
   toggleMetric: (metric, checked) =>
     set((state) => ({
