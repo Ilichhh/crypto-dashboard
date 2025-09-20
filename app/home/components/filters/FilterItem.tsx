@@ -9,9 +9,9 @@ interface FilterItemProps {
 
 export function FilterItem({ metric, checked, handleCheckedChange }: FilterItemProps) {
   return (
-    <div className="flex items-start gap-3">
-      <Checkbox id={metric} checked={checked} onCheckedChange={handleCheckedChange} />
+    <div className="flex flex-1 justify-between gap-2">
       <Label htmlFor={metric}>{metric}</Label>
+      <Checkbox id={metric} checked={checked} onCheckedChange={handleCheckedChange} />
     </div>
   );
 }
