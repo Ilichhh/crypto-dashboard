@@ -1,5 +1,6 @@
 import { type ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 
+import { cn } from '~/lib/utils';
 import {
   Table,
   TableBody,
@@ -42,13 +43,14 @@ export function MetricsTable<TData, TValue>({ columns, data }: MetricsTableProps
             {row.getVisibleCells().map((cell) => (
               <TableCell
                 key={cell.id}
-                className={
+                className={cn(
+                  'h-14',
                   typeof cell.getValue() === 'number'
                     ? (cell.getValue() as number) >= 0
                       ? 'text-positive-foreground'
                       : 'text-negative-foreground'
                     : ''
-                }
+                )}
               >
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </TableCell>

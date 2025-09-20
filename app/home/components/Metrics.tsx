@@ -8,19 +8,32 @@ import { MetricsTableSkeleton } from '~/home/components/table/MetricsTableSkelet
 import { ScrollArea, ScrollBar } from '~/components/ui/ScrollArea';
 
 export function Metrics() {
-  const { data: metricsData, isLoading, isError, error } = useMetrics();
-  const { data: dailyReturnData } = useDailyReturns();
+  const {
+    data: metricsData,
+    isLoading,
+    isError: isMetricsError,
+    error: metricsError,
+  } = useMetrics();
+  const {
+    data: dailyReturnData,
+    isError: isDailyReturnsError,
+    error: dailyReturnsError,
+  } = useDailyReturns();
 
-  if (isLoading || !metricsData || !dailyReturnData) {
-    return <MetricsTableSkeleton></MetricsTableSkeleton>;
-  }
-
-  if (isError) {
-    toast.error(error?.message);
+  if (isMetricsError) {
+    toast.error(metricsError?.message);
     return <h2 className="text-5xl">:(</h2>;
   }
 
-  const columns = generateColumns(metricsData, dailyReturnData);
+  if (isDailyReturnsError) {
+    toast.error(dailyReturnsError?.message);
+  }
+
+  if (isLoading || !metricsData) {
+    return <MetricsTableSkeleton></MetricsTableSkeleton>;
+  }
+
+  const columns = generateColumns(metricsData, dailyReturnData, isDailyReturnsError);
 
   return (
     <ScrollArea className="bg-card relative border-1">

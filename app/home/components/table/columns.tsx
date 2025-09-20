@@ -1,7 +1,8 @@
+import { CumulativeReturnSparkline } from './CumulativeReturnSparkline';
+
 import type { ColumnDef } from '@tanstack/react-table';
 import type { DailyReturn } from '~/types/dailyReturn';
 import type { StrategyMetrics } from '~/types/metrics';
-import { CumulativeReturnSparkline } from '../CumulativeReturnSparkline';
 
 const formatValue = (value: unknown, key: string) => {
   if (!value && typeof value !== 'number') return '-';
@@ -33,16 +34,24 @@ function computeCumulativeReturnsForAll(data: DailyReturn[]): DailyReturn[] {
 
 export function generateColumns(
   metricsData: StrategyMetrics[],
-  dailyReturnData: DailyReturn[]
+  dailyReturnData: DailyReturn[] | undefined,
+  isDailyReturnsError: boolean
 ): ColumnDef<StrategyMetrics>[] {
-  if (!metricsData || metricsData.length === 0) return [];
+  if (!metricsData || !metricsData.length) return [];
 
-  const cumulativeData = computeCumulativeReturnsForAll(dailyReturnData);
+  let cumulativeData: DailyReturn[] | undefined;
+  if (dailyReturnData) {
+    cumulativeData = computeCumulativeReturnsForAll(dailyReturnData);
+  }
 
   const sparklineColumn: ColumnDef<StrategyMetrics> = {
     accessorKey: 'All time',
     header: 'All time',
     cell: (info) => {
+      if (isDailyReturnsError)
+        return <span className="text-muted-foreground min-w-30">oops...</span>;
+      if (!cumulativeData) return <div className="text-muted-foreground min-w-30">loading...</div>;
+
       const strategy = info.row.original.Strategy as keyof DailyReturn;
       const lastRow = cumulativeData[cumulativeData.length - 1];
       const key = strategy as Exclude<keyof DailyReturn, 'date'>;
