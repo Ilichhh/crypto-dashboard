@@ -25,7 +25,7 @@ export function FiltersGroup({ metricsGroup, metricsGroupList }: FiltersGroupPro
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
       <div className="flex flex-1 items-center gap-2">
         <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="icon" className="size-8">
             {isOpen ? <ChevronUp /> : <ChevronDown />}
           </Button>
         </CollapsibleTrigger>

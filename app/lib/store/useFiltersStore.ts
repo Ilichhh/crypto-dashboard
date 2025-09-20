@@ -6,6 +6,7 @@ interface FiltersState {
   setSelectedMetrics: (metrics: string[]) => void;
   toggleMetric: (metric: string, checked: boolean) => void;
   toggleGroup: (metrics: string[], checked: boolean) => void;
+  clearFilters: () => void;
 }
 
 export const useFiltersStore = create<FiltersState>((set) => ({
@@ -26,4 +27,6 @@ export const useFiltersStore = create<FiltersState>((set) => ({
         ? [...new Set([...state.selectedMetrics, ...metrics])]
         : state.selectedMetrics.filter((item) => !metrics.includes(item)),
     })),
+
+  clearFilters: () => set({ selectedMetrics: [] }),
 }));
